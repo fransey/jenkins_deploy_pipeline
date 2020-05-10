@@ -24,7 +24,7 @@ config_version: ${ConfigVersion}
 springboot_profile: ${springboot_profile}
 deployment_host: ${deployment_host}
 application_port: ${application_port}
-startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChildLogs: false, inventory: '', jobTags: '', jobTemplate: "${env.deployment_job}", jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: true, towerCredentialsId: 'b199b399-2469-418d-aae1-08ae76d0aa65', towerServer: 'tstawx', verbose: false
+startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChildLogs: false, inventory: '', jobTags: '', jobTemplate: "${env.deployment_job}", jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: true, towerCredentialsId: 'b199b399-2469-418d-aae1-08ae76d0aa65', towerServer: 'awxweb', verbose: false
             }
         
 		}
