@@ -14,7 +14,7 @@ stages {
     stage('Deploy Artifact') {
             steps {
 ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
-nexus_url: ${localnexus}
+nexus_url: localnexus
 groupid: ${group_id}
 springboot_deploy_folder: ${springboot_deploy_dir}
 springboot_group: ${springboot_group}
