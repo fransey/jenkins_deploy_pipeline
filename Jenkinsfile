@@ -1,3 +1,4 @@
+
 pipeline {
     environment {
        GROOVY_HOME = tool name: 'groovy 2.4.6', type: 'hudson.plugins.groovy.GroovyInstallation'
@@ -7,7 +8,7 @@ pipeline {
             label 'master'
         }
     }
-
+stages {
     stage('Deploy Artifact') {
             steps {
 ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
@@ -27,5 +28,5 @@ startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChi
             }
         
 		}
-		
+		}
 }
