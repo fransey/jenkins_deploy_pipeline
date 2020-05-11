@@ -69,7 +69,7 @@ startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChi
         
 		}
 	
-	 stage('Start up application') {
+	 stage('Clean Up') {
         steps {
 ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
 nexus_url: ${NEXUS_API}
