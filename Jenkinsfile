@@ -70,7 +70,11 @@ startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChi
 		}
 	
 	 stage('Clean Up') {
+		  when { 
+                expression { currentBuild.result != 'FAILURE' }
+            }
         steps {
+		catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
 nexus_url: ${NEXUS_API}
 groupid: ${group_id}
@@ -85,7 +89,8 @@ springboot_profile: ${springboot_profile}
 deployment_host: ${deployment_host}
 application_port: ${application_port}
 startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChildLogs: false, inventory: '', jobTags: '', jobTemplate: 'deploy_demo-app_test', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: true, towerCredentialsId: '1b7eb453-b70c-4778-a2a9-fcbf6cf2bec0', towerServer: 'awx', verbose: false
-            }
+		}
+		}
         
 		}
 		}
