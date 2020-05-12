@@ -18,9 +18,9 @@ springboot_deploy_folder: ${springboot_deploy_dir}
 springboot_group: ${springboot_group}
 springboot_user: ${springboot_user}
 role: pre-deployment-checks
-version: ${version}
+version: ${appVersion}
 java_dir: ${java_dir}
-config_version: ${ConfigVersion}
+config_version: ${configVersion}
 springboot_profile: ${springboot_profile}
 deployment_host: ${deployment_host}
 application_port: ${application_port}
