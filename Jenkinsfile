@@ -10,8 +10,6 @@ pipeline {
     stages {
         stage('Pre-Deployment Checks') {
             steps {
-		    stage('Pre-Deployment Checks') {
-            steps {
 			ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
 			nexus_url: ${NEXUS_API}
 			groupid: ${group_id}
@@ -26,15 +24,13 @@ pipeline {
 			deployment_host: ${deployment_host}
 			application_port: ${application_port}
 			startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChildLogs: false, inventory: '', jobTags: '', jobTemplate: 'deploy_demo-app_test', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: true, towerCredentialsId: '1b7eb453-b70c-4778-a2a9-fcbf6cf2bec0', towerServer: 'awx', verbose: false
-
             }
         }
 
 
         stage('Deploy Artifact') {
             steps {
-		    
-		    	ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
+		    		    	ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
 		    	nexus_url: ${NEXUS_API}
 		    	groupid: ${group_id}
 		    	springboot_deploy_folder: ${springboot_deploy_dir}
@@ -48,14 +44,11 @@ pipeline {
 		    	deployment_host: ${deployment_host}
 		    	application_port: ${application_port}
 		    	startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChildLogs: false, inventory: '', jobTags: '', jobTemplate: 'deploy_demo-app_test', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: true, towerCredentialsId: '1b7eb453-b70c-4778-a2a9-fcbf6cf2bec0', towerServer: 'awx', verbose: false
-
             }
-
         }
 
         stage('Start up application') {
-            steps {
-		    
+            steps {		    
 		    	ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
 			nexus_url: ${NEXUS_API}
 			groupid: ${group_id}
@@ -70,9 +63,7 @@ pipeline {
 			deployment_host: ${deployment_host}
 			application_port: ${application_port}
 			startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChildLogs: false, inventory: '', jobTags: '', jobTemplate: 'deploy_demo-app_test', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: true, towerCredentialsId: '1b7eb453-b70c-4778-a2a9-fcbf6cf2bec0', towerServer: 'awx', verbose: false
-
             }
-
         }
 
         stage('Clean Up') {
@@ -92,10 +83,8 @@ pipeline {
 			deployment_host: ${deployment_host}
 			application_port: ${application_port}
 			startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChildLogs: false, inventory: '', jobTags: '', jobTemplate: 'deploy_demo-app_test', jobType: 'run', limit: '', removeColor: false, skipJobTags: '', templateType: 'job', throwExceptionWhenFail: true, towerCredentialsId: '1b7eb453-b70c-4778-a2a9-fcbf6cf2bec0', towerServer: 'awx', verbose: false
-
             }
         }
-
     }
 }
 }
