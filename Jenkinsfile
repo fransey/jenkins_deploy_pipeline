@@ -65,7 +65,7 @@ deployment_host: ${deployment_host}''', importTowerLogs: true, importWorkflowChi
 	
 	 stage('Clean Up') {
         steps {
-		{
+		
 ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
 nexus_url: ${NEXUS_API}
 groupid: ${group_id}
@@ -83,4 +83,3 @@ deployment_host: ${deployment_host}''', importTowerLogs: true, importWorkflowChi
         
 		}
 		}
-}
