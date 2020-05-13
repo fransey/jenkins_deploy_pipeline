@@ -9,7 +9,7 @@ pipeline {
         }
     }
 stages {
-	       stage('Pre-Deployment Checks') {
+	       stage('Pre-checks') {
             steps {
 ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
 nexus_url: ${NEXUS_API}
@@ -17,7 +17,7 @@ groupid: ${group_id}
 springboot_deploy_folder: ${springboot_deploy_dir}
 springboot_group: ${springboot_group}
 springboot_user: ${springboot_user}
-role: pre-deployment-checks
+role: prechecks
 version: ${appVersion}
 java_dir: ${java_dir}
 config_version: ${configVersion}
@@ -29,7 +29,7 @@ startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChi
         }
 
 
-    stage('Deploy Artifact') {
+    stage('Deploy artifact') {
             steps {
 ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
 nexus_url: ${NEXUS_API}
@@ -37,7 +37,7 @@ groupid: ${group_id}
 springboot_deploy_folder: ${springboot_deploy_dir}
 springboot_group: ${springboot_group}
 springboot_user: ${springboot_user}
-role: maven-deployment
+role: deployment
 version: ${appVersion}
 java_dir: ${java_dir}
 config_version: ${configVersion}
@@ -49,7 +49,7 @@ startup_timeout: ${startup_timeout}''', importTowerLogs: true, importWorkflowChi
         
 		}	
 	
-    stage('Start up application') {
+    stage('Startup application') {
         steps {
 ansibleTower async: false, credential: '', extraVars: '''artifactid: ${artifact_id}
 nexus_url: ${NEXUS_API}
@@ -57,7 +57,7 @@ groupid: ${group_id}
 springboot_deploy_folder: ${springboot_deploy_dir}
 springboot_group: ${springboot_group}
 springboot_user: ${springboot_user}
-role: systemd-configure-start-app
+role: startapplication
 version: ${appVersion}
 java_dir: ${java_dir}
 config_version: ${configVersion}
